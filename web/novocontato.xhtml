@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:decorate template="index.xhtml">
+        <ui:define name="centro">
+            <p:fieldset legend="Novo Contato" toggleable="true">
+                <center>
+                    <h:form>
+                        <p:growl id="growl"/>
+                        <h:panelGrid columns="3" id="grid">
+                            <p:outputLabel value="Nome:"/>
+                            <p:inputText id="nome" value="#{contatoControlle.contatoB.nome}" required="true" requiredMessage="Favor informe seu Nome"/>
+                            <p:message for="nome"/>
+
+                            <p:outputLabel value="Endereço"/>
+                            <p:inputText id="endereco" value="#{contatoControlle.contatoB.endereco}" required="true" requiredMessage="Favor informe seu Endereço"/>
+                            <p:message for="endereco"/>
+
+                            <p:outputLabel value="Cidade:"/>
+                            <p:inputText id="cidade" value="#{contatoControlle.contatoB.cidade}" required="true" requiredMessage="Favor informe seu Cidade"/>
+                            <p:message for="cidade"/>
+
+                            <p:outputLabel value="UF:"/>
+                            <p:selectOneMenu id="uf" value="#{contatoControlle.contatoB.UF}" required="true" requiredMessage="Favor informe seu UF">
+                                <f:selectItem itemLabel="TO" itemValue="MG"/>
+                            </p:selectOneMenu>
+                            <p:message for="uf"/>
+
+                            <p:outputLabel value="Telefone"/>
+                            <p:inputMask mask="(99)9999-9999" id="telefone" value="#{contatoControlle.contatoB.telefone}" />
+                            <p:message for="telefone"/>
+
+                            <p:outputLabel value="Celular:"/>
+                            <p:inputMask mask="(99)9999-9999" id="celular" value="#{contatoControlle.contatoB.celular}"/>
+                            <p:outputLabel value="*Opcional"/>
+
+                            <p:outputLabel value="E-mail"/>
+                            <p:inputText id="email" value="#{contatoControlle.contatoB.email}" rendered="true" requiredMessage="Favor informe seu E-mail"/>
+                            <p:outputLabel value="*Opcional"/>
+
+                        </h:panelGrid>
+                        <p:separator style="width: 80%; height: 5px"/>
+                        <p:commandButton value="Salvar" action="#{contatoControlle.salvaContato()}" update="grid, growl"/>
+                        <p:commandButton value="Limpar" type="reset"/>
+                    </h:form>
+                </center>
+            </p:fieldset>
+        </ui:define>
+    </ui:decorate>
+</html>
+
